@@ -1,0 +1,48 @@
+{% extends 'base.html'%}
+
+{%block main_block%}
+
+<center><h1 class="mb-3">total Expense count : {{total_expense_count}}</h1>
+
+
+
+    <div class="border w-50 mb-3 bg-info">
+        <h3>category wise summary</h3>
+        {%for cs in category_summary %}
+
+        <div>
+            {{cs.category}}:{{cs.exp_count}}
+        </div>
+        {%endfor%}
+    </div>
+
+
+
+    <div class="border w-50  bg-secondary mb-3">
+        <h3>Expense summary</h3>
+  
+        <div>
+            {{total_expense}}:{{exp_sum}}
+        </div>
+      
+    </div>
+
+    <div class="border w-50 mb-3 bg-info">
+
+        <h3>category wise total summary</h3>
+
+        {%for ct in category_total %}
+
+        <div>
+            {{ct.category}}:{{ct.cat_total}}
+        </div>
+        {%endfor%}
+    </div>
+
+
+
+   
+</center>
+
+
+{%endblock%}

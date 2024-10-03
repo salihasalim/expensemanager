@@ -1,0 +1,55 @@
+{%extends 'base.html'%}
+{%block main_block%}
+
+
+<div class="container my-3"></div>
+    <div class="w-50 mx-auto">
+        <form action="">
+            <select name="category" id="" class="form-select" onchange="this.form.submit()">
+                <option value="">Select one</option>
+                <option value="all" {%if selected == "all"%}selected{%endif%}>all</option>
+                <option value="food" {%if selected == "food"%}selected{%endif%}>food</option>
+                <option value="travel"{%if selected == "travel"%}selected{%endif%}>travel</option>
+                <option value="health" {%if selected == "health"%}selected{%endif%}>health</option>
+                <option value="other"{%if selected == "other"%}selected{%endif%}>other</option>
+            </select>
+        </form>
+        <!-- <form action="{%url 'expense_list'%}" class="pt-3 mx-2" >
+            <input type="text" placeholder="enter keyword" name="search_text" class=" mx-3">
+            <button type="submit" class="btn-danger" > Search</button>
+        </form> -->
+    </div>
+</div>
+
+<div class="container mt-5">
+    <div class="row">
+        {%for e in expenses%}
+        <div class="col-4">
+            <div class="card text-bg-dark mb-3" style="max-width: 18rem;">
+                <div class="card-header d-flex justify-content-between">
+                    <div> {{e.user}} </div>
+                    <div> {{e.amount}}</div>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">{{e.title}}</h5>
+                    <p class="card-text">{{e.category}}</p>
+                </div>
+                <div class="card-footer text-body-white">
+                    created_date:{{e.created_date|date}}
+                 
+                </div>
+
+                <div class="card-footer text-body-white d-flex justify-content-between">
+                    <a  class="btn-btn-dark " href="{%url 'expense_update' e.id%}" role="button">View</a>
+                    <a  class="btn-btn-dark " href="{%url 'expense_remove' e.id%}" role="button">Remove</a>
+                </div>
+
+                </div>
+              </div>
+      
+        {%endfor%}
+    </div>
+</div>
+    {%endblock%}
+    {%block script_block%}
+    {%endblock%}
