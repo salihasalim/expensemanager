@@ -1,6 +1,8 @@
 
 from django.db import models
 
+from django.contrib.auth.models import User
+
 class Expense(models.Model):
 
     title=models.CharField(max_length=200)
@@ -17,8 +19,11 @@ class Expense(models.Model):
     )
 
     category=models.CharField(max_length=200,choices=category_choices,default="other")
+
+
+    user=models.ForeignKey(User,on_delete=models.CASCADE)
     
-    user=models.CharField(max_length=200)
+    
 
     def __str__(self):
 

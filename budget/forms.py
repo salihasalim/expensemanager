@@ -13,13 +13,13 @@ class ExpenseForm(forms.ModelForm):
 
         # fields="__all__"
 
-        exclude=('created_date',)
+        exclude=('created_date','user')
 
         widgets={
             "title":forms.TextInput(attrs={"class":"form-control"}),
             "amount":forms.NumberInput(attrs={"class":"form-control"}),
             "category":forms.Select(attrs={"class":"form-contruol form-select"}),
-            "user":forms.TextInput(attrs={"class":"form-control"})
+            
         }
     
 
@@ -39,7 +39,7 @@ class RegistrationForm(forms.ModelForm):
 
             "email":forms.TextInput(attrs={"class":"form-control"}),
 
-            "password":forms.TextInput(attrs={"class":"form-control"})
+            "password":forms.PasswordInput(attrs={"class":"form-control"})
 
 
         }
@@ -50,5 +50,5 @@ class SignInForm(forms.Form):
 
     username=forms.CharField(widget=forms.TextInput(attrs={"class":"form-control "}))
 
-    password=forms.CharField(widget=forms.TextInput(attrs={"class":"form-control "}))
+    password=forms.CharField(widget=forms.PasswordInput(attrs={"class":"form-control "}))
 
