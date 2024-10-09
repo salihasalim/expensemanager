@@ -16,8 +16,12 @@ from django.contrib.auth.models import User
 
 from django.contrib.auth import authenticate,login,logout
 
+from budget.decorators import signin_required
+
+from django.utils.decorators import method_decorator
 
 
+@method_decorator(signin_required,name="dispatch")
 class ExpenseCreateView(View):
 
     def get(self,request,*args,**kwargs):
@@ -50,6 +54,7 @@ class ExpenseCreateView(View):
 
 
 
+@method_decorator(signin_required,name="dispatch")
 
 class ExpenseListView(View):
 
@@ -85,6 +90,7 @@ class ExpenseListView(View):
 
 
 
+@method_decorator(signin_required,name="dispatch")
 
 class ExpenseUpdateView(View):
 
@@ -120,6 +126,7 @@ class ExpenseUpdateView(View):
             return render(request,"expense_update.html",{"form":form_instance})
 
 
+@method_decorator(signin_required,name="dispatch")
 
 class ExpenseDeleteView(View):
 
@@ -135,6 +142,7 @@ class ExpenseDeleteView(View):
 
 
 
+@method_decorator(signin_required,name="dispatch")
 
 class ExpenseSummaryView(View):
 
@@ -235,6 +243,7 @@ class SignInView(View):
     
 
 
+@method_decorator(signin_required,name="dispatch")
 
 class SignOutView(View):
 
